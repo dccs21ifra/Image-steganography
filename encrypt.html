@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Secure Your Message</title>
+
+    
+
+    <style>
+
+        body {background-color: #3498db;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+        form {
+
+            margin: 20px;
+
+        }
+
+        input, button {
+
+            margin: 10px 0;
+
+        }
+
+        img {
+
+            max-width: 100%;
+
+            height: auto;
+
+        }
+
+        body {
+    background-color: #3498db;
+    font-family: 'Roboto', sans-serif;
+
+    background-image: url("steg2.jpg");
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+#login {
+    background-color: #3498db;
+    background-image: url("steg3.jpg");
+
+    box-shadow: 0 0 10px rgb(248, 246, 246);
+
+    margin: 150px auto;
+
+    padding: 50px;
+
+    max-width: 400px;
+
+}
+
+#registration {
+    background-image: url("steg3.jpg");
+    background-color: #3498db;
+    box-shadow: 0 0 10px rgb(253, 252, 252);
+
+    margin: 150px auto;
+
+    padding: 50px;
+
+    max-width: 400px;
+
+}
+
+            body {
+
+    font-family: 'Roboto', sans-serif;
+    background-color: #3498db;
+    
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+ 
+
+ #imageInsertion {
+
+    background-image: url("steg3.jpg");
+    background-color: #3498db;
+    box-shadow: 0 0 10px rgb(241, 238, 238);
+
+    margin: 150px auto;
+
+    padding: 30px;
+
+    max-width: 400px;
+
+        }body {
+
+    font-family: 'Roboto', sans-serif;
+    background-color: #3498db;
+    background-image: url("steg2.jpg");
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+#saveImage {
+
+    background-image: url("steg3.jpg");
+    background-color: #3498db;
+    box-shadow: 0 0 10px rgb(250, 250, 250);
+
+    margin: 150px auto;
+
+    padding: 50px;
+
+    max-width: 400px;
+
+        }body {
+
+    font-family: 'Roboto', sans-serif;
+    background-color: #3498db;
+    background-image: url("steg2.jpg");
+
+    margin: 0;
+
+    padding: 0;
+
+}
+button {
+  color: white; /* Change this to the desired color */
+}
+        
+
+h1 {
+
+    color:white;
+
+    text-align: center;
+
+}
+
+h2 {
+
+    color:white;
+
+    text-align: center;
+
+}
+
+p {
+
+    color:white;
+
+    text-align: center;
+
+}
+
+form {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+
+label {
+
+    margin-bottom: 10px;
+
+    color:white;
+
+}
+
+
+
+input {
+
+    padding: 10px;
+
+    margin-bottom: 16px;
+
+    border: rgb(253, 253, 253);
+
+    border-radius: 8px;
+
+}
+
+
+
+button {
+
+    background-color: darkblue;
+       padding: 10px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+}
+
+
+
+button:hover {
+
+    background-color: darkblue;
+
+}
+
+
+
+/* Add a subtle hover effect to input fields */
+
+input:hover,
+
+input:focus {
+
+    border-color: #f2f3f5;
+
+}
+
+
+
+/* Add a subtle transition effect to the button */
+
+button {
+background-color: darkblue;
+    transition: background-color 0.3s ease;
+
+}
+
+
+    .decrypt-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: dark blue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .decrypt-button:hover {
+      background-color: dark blue;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+<body>
+
+
+
+<!-- Page 1: Login Form -->
+
+<section id="login">
+
+    <h1>Login</h1>
+
+    <form onsubmit="goToRegistration(); return false;">
+
+        <label for="username">Username:</label>
+
+        <input type="text" id="username" required><br>
+
+        <label for="password">Password:</label>
+
+        <input type="password" id="password" required><br>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+</section>
+
+
+
+<!-- Page 2: Registration Form -->
+
+<section id="registration" style="display: none;">
+
+    <h1>Registration</h1>
+
+    <form onsubmit="goToImageInsertion(); return false;">
+
+        <label for="newUsername">New Username:</label>
+
+        <input type="text" id="newUsername" required><br>
+
+        <label for="newPassword">New Password:</label>
+
+        <input type="password" id="newPassword" required><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+</section>
+
+
+
+
+
+<!-- Page 3: Image Insertion -->
+
+<section id="imageInsertion" style="display: none;">
+
+    <h1>Insert Image</h1>
+
+    <form onsubmit="goToEncryptMessage(); return false;">
+
+        <label for="image">Insert Image:</label>
+
+        <input type="file" id="image" accept="image/*" required><br>
+
+        <button type="submit">Next</button>
+
+    </form>
+
+</section>
+
+
+
+<!-- Page 4: Encrypt Message -->
+
+<!-- ... (Previous HTML code) ... -->
+
+
+
+<!-- Page 4: Encrypt Message -->
+
+<section id="encryptMessage" style="display: none;">
+
+    <h1>Encrypt Message</h1>
+
+    <form onsubmit="saveAndEncrypt(); return false;">
+
+        <label for="message">Enter Message to Encrypt:</label>
+
+        <textarea id="message" rows="4" cols="50" required></textarea><br>
+<label for="message">Re-enter Message to Encrypt:</label>
+
+        <textarea id="textToTransfer"></textarea>
+        
+        
+
+        <!-- Dropdown for predefined messages -->
+
+        <label for="predefinedMessages">Predefined Messages:</label>
+
+        <select id="predefinedMessages" onchange="insertPredefinedMessage()">
+
+            <option value="" selected disabled>Select a message</option>
+
+            <option value="Hello, world!">Hello, world!</option>
+
+            <option value="Good morning!">Good morning!</option>
+
+            <option value="How are you?">How are you?</option>
+
+        </select><br>
+
+  <button onclick="saveText()">Encrypt and Save Text</button>      
+
+    </form>
+
+</section>
+
+<script>
+
+  
+
+
+
+    function insertPredefinedMessage() {
+
+        const messageTextarea = document.getElementById('message');
+
+        const predefinedMessagesDropdown = document.getElementById('predefinedMessages');
+
+
+
+        if (predefinedMessagesDropdown.value !== "") {
+
+            messageTextarea.value += predefinedMessagesDropdown.value;
+
+        }
+
+    }
+
+
+
+    // ... (The rest of the JavaScript code) ...
+
+</script>
+
+
+
+
+
+
+
+
+
+<!-- Page 5: Save Image and Decrypt Message -->
+
+<section id="saveImage" style="display: none;">
+
+    <h1>Save Image and Decrypt Message</h1>
+
+    <img id="resultImage" alt="Result Image"><br>
+
+    <button onclick="decryptMessage()">Decrypt Message</button>
+
+    <h2>Decrypted Message:</h2>
+
+    <p id="decryptedMessage"></p>
+<button class="decrypt-button" onclick="location.href='decrypt.html'">Go to Decrypt Page</button>
+</section>
+
+
+
+<script>
+
+    let encryptedMessage = '';
+
+
+
+    function goToRegistration() {
+
+        document.getElementById('login').style.display = 'none';
+
+        document.getElementById('registration').style.display = 'block';
+
+    }
+
+
+
+    function goToImageInsertion() {
+
+        document.getElementById('registration').style.display = 'none';
+
+        document.getElementById('imageInsertion').style.display = 'block';
+
+    }
+
+
+
+    function goToEncryptMessage() {
+
+        document.getElementById('imageInsertion').style.display = 'none';
+
+        document.getElementById('encryptMessage').style.display = 'block';
+
+    }
+
+
+
+    function saveAndEncrypt() {
+
+        const messageInput = document.getElementById('message').value;
+
+
+
+        // Simulate encryption (substitution cipher)
+
+        encryptedMessage = messageInput.replace(/[a-zA-Z]/g, function(char) {
+
+            const code = char.charCodeAt(0);
+
+            return String.fromCharCode(code + 1);
+
+        });
+
+// Inside your code where you redirect to the decrypt page
+function goToDecryptPage() {
+    // Assuming encryptedMessage is the variable holding the encrypted message
+    window.location.href = 'decrypt.html?encryptedMessage=' + encodeURIComponent(encryptedMessage);
+}
+
+
+        goToSaveImage();
+
+    }
+
+
+
+    function goToSaveImage() {
+
+        const imageInput = document.getElementById('image');
+
+        const resultImageElement = document.getElementById('resultImage');
+
+
+
+        // Simulate saving image
+
+        const canvas = document.createElement('canvas');
+
+        const context = canvas.getContext('2d');
+
+        const img = new Image();
+
+
+
+        img.onload = function () {
+
+            canvas.width = img.width;
+
+            canvas.height = img.height;
+
+            context.drawImage(img, 0, 0);
+
+
+
+            // Display the result
+
+            resultImageElement.src = canvas.toDataURL();
+
+            document.getElementById('encryptMessage').style.display = 'none';
+
+            document.getElementById('saveImage').style.display = 'block';
+
+        };
+
+
+
+        img.src = URL.createObjectURL(imageInput.files[0]);
+
+    }
+
+function saveText() {
+            var text = document.getElementById('textToTransfer').value;
+            localStorage.setItem('savedText', text);
+        }
+        
+        
+        
+        
+
+    function decryptMessage() {
+
+        const decryptedMessageElement = document.getElementById('decryptedMessage');
+
+
+
+        // Simulate decryption (substitution cipher)
+
+        const decryptedMessage = encryptedMessage.replace(/[a-zA-Z]/g, function(char) {
+
+            const code = char.charCodeAt(0);
+
+            return String.fromCharCode(code - 1);
+
+        });
+
+
+
+        // Display the decrypted message
+
+        decryptedMessageElement.innerText = decryptedMessage;
+
+    }function hideMessageInImage(imageData, message) {
+
+    const binaryMessage = textToBinary(message);
+
+    let binaryIndex = 0;
+
+
+
+    for (let i = 0; i < imageData.data.length; i += 4) {
+
+        for (let j = 0; j < 3; j++) {
+
+            if (binaryIndex < binaryMessage.length) {
+
+                // Clear the least significant bit
+
+                imageData.data[i + j] &= 0b11111110;
+
+
+
+                // Set the least significant bit according to the message
+
+                imageData.data[i + j] |= parseInt(binaryMessage[binaryIndex], 2);
+
+
+
+                binaryIndex++;
+
+            }
+
+        }
+
+    }
+
+
+
+    return imageData;
+
+}
+
+
+
+function textToBinary(text) {
+
+    return text.split('').map(function (char) {
+
+        return char.charCodeAt(0).toString(2).padStart(8, '0');
+
+    }).join('');
+
+}
+
+
+
+function binaryToText(binary) {
+
+    return binary.match(/.{8}/g).map(function (byte) {
+
+        return String.fromCharCode(parseInt(byte, 2));
+
+    }).join('');
+
+}
+
+
+
+function revealMessageInImage(imageData) {
+
+    let binaryMessage = '';
+
+
+
+    for (let i = 0; i < imageData.data.length; i += 4) {
+
+        for (let j = 0; j < 3; j++) {
+
+            // Extract the least significant bit and append to the binary message
+
+            binaryMessage += (imageData.data[i + j] & 0b00000001).toString();
+
+        }
+
+    }
+
+
+
+    return binaryToText(binaryMessage);
+
+}
+
+function goToDecryptPage() {
+    // Assuming encryptedMessage is the variable holding the encrypted message
+    const encryptedMessageParam = encodeURIComponent(encryptedMessage);
+    window.location.href = 'decrypt.html?encryptedMessage=' + encryptedMessageParam;
+}
+
+
+    
+
+</script>
+
+
+
+</body>
+
+</html>
