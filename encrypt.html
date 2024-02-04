@@ -271,15 +271,35 @@ background-color: darkblue;
 
 <body>
 
+<!-- Page 1: Registration Form -->
 
+<section id="registration">
 
-<!-- Page 1: Login Form -->
+    <h1>Registration</h1>
 
-<section id="login">
+    <form onsubmit="goToLogin(); return false;">
+
+        <label for="newUsername">New Username:</label>
+
+        <input type="text" id="newUsername" required><br>
+
+        <label for="newPassword">New Password:</label>
+
+        <input type="password" id="newPassword" required><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+</section>
+
+<!-- Page 2: Login Form -->
+
+<section id="login" style="display: none;">
 
     <h1>Login</h1>
 
-    <form onsubmit="goToRegistration(); return false;">
+    <form onsubmit="goToImageInsertion(); return false;">
 
         <label for="username">Username:</label>
 
@@ -295,29 +315,6 @@ background-color: darkblue;
 
 </section>
 
-
-
-<!-- Page 2: Registration Form -->
-
-<section id="registration" style="display: none;">
-
-    <h1>Registration</h1>
-
-    <form onsubmit="goToImageInsertion(); return false;">
-
-        <label for="newUsername">New Username:</label>
-
-        <input type="text" id="newUsername" required><br>
-
-        <label for="newPassword">New Password:</label>
-
-        <input type="password" id="newPassword" required><br>
-
-        <button type="submit">Register</button>
-
-    </form>
-
-</section>
 
 
 
@@ -447,20 +444,17 @@ background-color: darkblue;
     let encryptedMessage = '';
 
 
+function goToLogin() {
+            document.getElementById('registration').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
 
-    function goToRegistration() {
-
-        document.getElementById('login').style.display = 'none';
-
-        document.getElementById('registration').style.display = 'block';
-
-    }
-
+    
 
 
     function goToImageInsertion() {
 
-        document.getElementById('registration').style.display = 'none';
+        document.getElementById('login').style.display = 'none';
 
         document.getElementById('imageInsertion').style.display = 'block';
 
