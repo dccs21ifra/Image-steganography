@@ -143,67 +143,72 @@ button {
 </head>
 <body>
 
-<!-- Page 1: Login Form -->
-<section id="login">
+    <!-- Page 1: Registration Form -->
 
-    <h1>Login</h1>
+    <section id="registration">
 
-    <form onsubmit="goToRegistration(); return false;">
+        <h1>Registration</h1>
 
-        <label for="username">Username:</label>
-        <input type="text" id="username" required><br>
+        <form onsubmit="goToLogin(); return false;">
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" required><br>
+            <label for="newUsername">New Username:</label>
+            <input type="text" id="newUsername" required><br>
 
-        <button type="submit">Login</button>
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" required><br>
 
-    </form>
+            <button type="submit">Register</button>
 
-</section>
+        </form>
 
-<!-- Page 2: Registration Form -->
-<section id="registration" style="display: none;">
+    </section>
 
-    <h1>Registration</h1>
+    <!-- Page 2: Login Form -->
 
-    <form onsubmit="goToDecryptImagePage(); return false;">
+    <section id="login" style="display: none;">
 
-        <label for="newUsername">New Username:</label>
-        <input type="text" id="newUsername" required><br>
+        <h1>Login</h1>
 
-        <label for="newPassword">New Password:</label>
-        <input type="password" id="newPassword" required><br>
+        <form onsubmit="goToDecryptImagePage(); return false;">
 
-        <button type="submit">Register</button>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required><br>
 
-    </form>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><br>
 
-</section>
+            <button type="submit">Login</button>
 
-<!-- Page 3: Decrypt Image Page -->
-<section id="decryptImagePage" style="display: none;">
-    <h1>Decrypt Image and View Message</h1>
-    <button onclick="openSavedImage()">Open Image</button>
+        </form>
 
-    <img id="encryptedImage" alt="Encrypted Image">
-    <h2>Decrypted Message:</h2>
-    <p id="decryptedMessage"></p>
-    <button onclick="decryptMessage()">Decrypt Message</button>
-    <textarea id="displayText"></textarea>
-</section>
+    </section>
+
+    <!-- Page 3: Decrypt Image Page -->
+    <section id="decryptImagePage" style="display: none;">
+        <h1>Decrypt Image and View Message</h1>
+        <button onclick="openSavedImage()">Open Image</button>
+
+        <img id="encryptedImage" alt="Encrypted Image">
+        <h2>Decrypted Message:</h2>
+        <p id="decryptedMessage"></p>
+        <button onclick="decryptMessage()">Decrypt Message</button>
+        <textarea id="displayText"></textarea>
+    </section>
+
 
 <script>
-    function goToRegistration() {
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('registration').style.display = 'block';
-    }
 
-    function goToDecryptImagePage() {
-        document.getElementById('registration').style.display = 'none';
-        document.getElementById('decryptImagePage').style.display = 'block';
-    }
+function goToLogin() {
+            document.getElementById('registration').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
 
+        function goToDecryptImagePage() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('decryptImagePage').style.display = 'block';
+        }
+
+    
     function openSavedImage() {
         const encryptedImageElement = document.getElementById('encryptedImage');
 
