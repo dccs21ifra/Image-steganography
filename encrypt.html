@@ -579,26 +579,6 @@ function saveText() {
         
         
    
-    function saveImage() {
-        const resultImageElement = document.getElementById('resultImage');
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        const img = new Image();
-
-        img.onload = function () {
-            canvas.width = img.width;
-            canvas.height = img.height;
-            context.drawImage(img, 0, 0);
-
-            // Convert canvas to data URL and trigger download
-            const downloadLink = document.createElement('a');
-            downloadLink.href = canvas.toDataURL('image/png');
-            downloadLink.download = 'saved_image.png';
-            downloadLink.click();
-        };
-
-        img.src = resultImageElement.src;
-    }
      
         
 
