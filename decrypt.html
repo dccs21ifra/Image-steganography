@@ -20,8 +20,9 @@
         body {
             background-color: #3498db;
             font-family: Arial, sans-serif;
-            background-image: url("steg2.jpg");
+       background-image: url("steg2.jpg");
         }
+        
 
         form {
             margin: 50px;
@@ -36,22 +37,49 @@
             height: auto ;
         }
 
-        #login {
-            background-color: #3498db;
-            box-shadow: 0 0 10px rgb(248, 246, 246);
-            margin: 150px auto;
-            padding: 10px;
-            max-width: 400px;
-        }
+  #login {
+    background-color: #3498db;
+    
 
-        #decryptImagePage {
-            background-color: #3498db;
-            box-shadow: 0 0 10px rgb(253, 252, 252);
-            margin: 150px auto;
-            padding: 10px;
-            max-width: 400px;
-        }
+    box-shadow: 0 0 10px rgb(248, 246, 246);
 
+    margin: 150px auto;
+
+    padding: 10px;
+
+    max-width: 400px;
+
+}
+
+#registration {
+
+  #decryptImagePage {
+    
+    background-color: #3498db;
+    box-shadow: 0 0 10px rgb(253, 252, 252);
+
+    margin: 150px auto;
+
+    padding: 10px;
+
+    max-width: 400px;
+
+}
+
+            body {
+
+    font-family: 'Roboto', sans-serif;
+    background-color: #3498db;
+    
+background-image: url("steg2.jpg");
+    margin: 0;
+
+    padding: 0;
+
+}    
+button {
+  color: white; /* Change this to the desired color */
+}
         h1, h2, p {
             color: white;
             text-align: center;
@@ -81,7 +109,6 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            color: white;
         }
 
         button:hover {
@@ -95,9 +122,11 @@
 </head>
 <body>
 
-    <!-- Page 2: Login Form -->
 
-    <section id="login">
+
+    <!-- Page 1: Login Form -->
+
+    <section id="login" style="display: none;">
 
         <h1>Login</h1>
 
@@ -109,13 +138,13 @@
             <label for="password">Password:</label>
             <input type="password" id="password" required><br>
 
-            <button type="submit">Login</button>
+            <button type="submit">Login</button><a>decryptImagePage</a>
 
         </form>
 
     </section>
 
-    <!-- Page 3: Decrypt Image Page -->
+    <!-- Page 2: Decrypt Image Page -->
     <section id="decryptImagePage" style="display: none;">
         <h1>Decrypt Image and View Message</h1>
         <button onclick="openSavedImage()">Open Image</button>
@@ -130,11 +159,14 @@
 
 <script>
 
-    function goToDecryptImagePage() {
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('decryptImagePage').style.display = 'block';
-    }
 
+
+        function goToDecryptImagePage() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('decryptImagePage').style.display = 'block';
+        }
+
+    
     function openSavedImage() {
         const encryptedImageElement = document.getElementById('encryptedImage');
 
@@ -171,10 +203,13 @@
         // Redirect to the index page
         window.location.href = 'encrypt.html';
     }
-
-    function decryptMessage() {
+// Append the link to a container (e.g., a div with id 'linkContainer')
+document.getElementById('linkContainer').appendChild(encryptPageLink);function decryptMessage() {
         const decryptedMessageElement = document.getElementById('decryptedMessage');
-        document.getElementById('displayText').value = localStorage.getItem('savedText');      
+
+        
+  document.getElementById('displayText').value = localStorage.getItem('savedText');      
+       
     }
 </script>
 </body>
