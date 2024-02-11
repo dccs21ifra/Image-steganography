@@ -20,9 +20,10 @@
         body {
             background-color: #3498db;
             font-family: Arial, sans-serif;
-            background-image: url("steg2.jpg");
+       background-image: url("steg2.jpg");
         }
         
+
         form {
             margin: 50px;
         }
@@ -36,22 +37,70 @@
             height: auto ;
         }
 
-        #login {
-            background-color: #3498db;
-            box-shadow: 0 0 10px rgb(248, 246, 246);
-            margin: 150px auto;
-            padding: 10px;
-            max-width: 400px;
-        }
+  #login {
+    background-color: #3498db;
+    
 
-        #decryptImagePage {
-            background-color: #3498db;
-            box-shadow: 0 0 10px rgb(253, 252, 252);
-            margin: 150px auto;
-            padding: 10px;
-            max-width: 400px;
-        }
+    box-shadow: 0 0 10px rgb(248, 246, 246);
 
+    margin: 150px auto;
+
+    padding: 10px;
+
+    max-width: 400px;
+
+}
+
+#registration {
+    
+    background-color: #3498db;
+    box-shadow: 0 0 10px rgb(253, 252, 252);
+
+    margin: 150px auto;
+
+    padding: 10px;
+
+    max-width: 400px;
+}
+
+            body {
+
+    font-family: 'Roboto', sans-serif;
+    background-color: #3498db;
+    background-image: url("steg2.jpg");
+
+    margin: 0;
+
+    padding: 0;
+
+}
+  #decryptImagePage {
+    
+    background-color: #3498db;
+    box-shadow: 0 0 10px rgb(253, 252, 252);
+
+    margin: 150px auto;
+
+    padding: 10px;
+
+    max-width: 400px;
+
+}
+
+            body {
+
+    font-family: 'Roboto', sans-serif;
+    background-color: #3498db;
+    
+background-image: url("steg2.jpg");
+    margin: 0;
+
+    padding: 0;
+
+}    
+button {
+  color: white; /* Change this to the desired color */
+}
         h1, h2, p {
             color: white;
             text-align: center;
@@ -81,7 +130,6 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            color: white;
         }
 
         button:hover {
@@ -95,13 +143,33 @@
 </head>
 <body>
 
+    <!-- Page 1: Registration Form -->
+
+    <section id="registration">
+
+        <h1>Registration</h1>
+
+        <form onsubmit="goToLogin(); return false;">
+
+            <label for="newUsername">New Username:</label>
+            <input type="text" id="newUsername" required><br>
+
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" required><br>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+    </section>
+
     <!-- Page 2: Login Form -->
 
-    <section id="login">
+    <section id="login" style="display: none;">
 
         <h1>Login</h1>
 
-        <form onsubmit="authenticate(); return false;">
+        <form onsubmit="goToDecryptImagePage(); return false;">
 
             <label for="username">Username:</label>
             <input type="text" id="username" required><br>
@@ -129,23 +197,18 @@
 
 
 <script>
-    function authenticate() {
-        // Simulate authentication
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
 
-        // Here you would perform actual authentication
-        // For demonstration purposes, let's assume a valid username and password
-        if (username === 'user' && password === 'password') {
-            // Show the decrypt image page
+function goToLogin() {
+            document.getElementById('registration').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+
+        function goToDecryptImagePage() {
             document.getElementById('login').style.display = 'none';
             document.getElementById('decryptImagePage').style.display = 'block';
-        } else {
-            // Show an error message or handle authentication failure
-            alert('Invalid username or password. Please try again.');
         }
-    }
 
+    
     function openSavedImage() {
         const encryptedImageElement = document.getElementById('encryptedImage');
 
@@ -182,10 +245,13 @@
         // Redirect to the index page
         window.location.href = 'encrypt.html';
     }
-
-    function decryptMessage() {
+// Append the link to a container (e.g., a div with id 'linkContainer')
+document.getElementById('linkContainer').appendChild(encryptPageLink);function decryptMessage() {
         const decryptedMessageElement = document.getElementById('decryptedMessage');
-        document.getElementById('displayText').value = localStorage.getItem('savedText');      
+
+        
+  document.getElementById('displayText').value = localStorage.getItem('savedText');      
+       
     }
 </script>
 </body>
