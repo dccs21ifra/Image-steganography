@@ -17,90 +17,6 @@
             background-image: url("steg2.jpg");
         }
 
-        body {
-            background-color: #3498db;
-            font-family: Arial, sans-serif;
-       background-image: url("steg2.jpg");
-        }
-        
-
-        form {
-            margin: 50px;
-        }
-
-        input, button {
-            margin: 10px 0;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto ;
-        }
-
-  #login {
-    background-color: #3498db;
-    
-
-    box-shadow: 0 0 10px rgb(248, 246, 246);
-
-    margin: 150px auto;
-
-    padding: 10px;
-
-    max-width: 400px;
-
-}
-
-#registration {
-    
-    background-color: #3498db;
-    box-shadow: 0 0 10px rgb(253, 252, 252);
-
-    margin: 150px auto;
-
-    padding: 10px;
-
-    max-width: 400px;
-}
-
-            body {
-
-    font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    background-image: url("steg2.jpg");
-
-    margin: 0;
-
-    padding: 0;
-
-}
-  #decryptImagePage {
-    
-    background-color: #3498db;
-    box-shadow: 0 0 10px rgb(253, 252, 252);
-
-    margin: 150px auto;
-
-    padding: 10px;
-
-    max-width: 400px;
-
-}
-
-            body {
-
-    font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    
-background-image: url("steg2.jpg");
-    margin: 0;
-
-    padding: 0;
-
-}    
-button {
-  color: white; /* Change this to the desired color */
-}
         h1, h2, p {
             color: white;
             text-align: center;
@@ -119,7 +35,8 @@ button {
         input {
             padding: 10px;
             margin-bottom: 16px;
-            border: 1px solid rgb(253, 253, 253); width: 250px;
+            border: 1px solid rgb(253, 253, 253);
+            width: 250px;
             border-radius: 8px;
         }
 
@@ -143,29 +60,9 @@ button {
 </head>
 <body>
 
-    <!-- Page 1: Registration Form -->
-
-    <section id="registration">
-
-        <h1>Registration</h1>
-
-        <form onsubmit="goToLogin(); return false;">
-
-            <label for="newUsername">New Username:</label>
-            <input type="text" id="newUsername" required><br>
-
-            <label for="newPassword">New Password:</label>
-            <input type="password" id="newPassword" required><br>
-
-            <button type="submit">Register</button>
-
-        </form>
-
-    </section>
-
     <!-- Page 2: Login Form -->
 
-    <section id="login" style="display: none;">
+    <section id="login">
 
         <h1>Login</h1>
 
@@ -198,17 +95,11 @@ button {
 
 <script>
 
-function goToLogin() {
-            document.getElementById('registration').style.display = 'none';
-            document.getElementById('login').style.display = 'block';
-        }
+    function goToDecryptImagePage() {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('decryptImagePage').style.display = 'block';
+    }
 
-        function goToDecryptImagePage() {
-            document.getElementById('login').style.display = 'none';
-            document.getElementById('decryptImagePage').style.display = 'block';
-        }
-
-    
     function openSavedImage() {
         const encryptedImageElement = document.getElementById('encryptedImage');
 
@@ -241,18 +132,6 @@ function goToLogin() {
     const urlParams = new URLSearchParams(window.location.search);
     const encryptedMessage = urlParams.get('encryptedMessage');
 
-    function goToIndex() {
-        // Redirect to the index page
-        window.location.href = 'encrypt.html';
-    }
-// Append the link to a container (e.g., a div with id 'linkContainer')
-document.getElementById('linkContainer').appendChild(encryptPageLink);function decryptMessage() {
-        const decryptedMessageElement = document.getElementById('decryptedMessage');
-
-        
-  document.getElementById('displayText').value = localStorage.getItem('savedText');      
-       
-    }
 </script>
 </body>
 </html>
