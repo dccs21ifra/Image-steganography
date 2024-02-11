@@ -17,129 +17,79 @@
             background-image: url("steg2.jpg");
         }
 
-        h1, h2, p {
-            color: white;
-            text-align: center;
+        body {
+            background-color: #3498db;
+            font-family: Arial, sans-serif;
+            background-image: url("steg2.jpg");
         }
-
+        
         form {
-            display: flex;
-            flex-direction: column;
             margin: 50px;
         }
 
-        label {
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        input {
-            padding: 10px;
-            margin-bottom: 16px;
-            border: 1px solid rgb(253, 253, 253); width: 250px;
-            border-radius: 8px;
-        }
-        
-        #login {
-    background-color: #3498db;
-    
-
-    box-shadow: 0 0 10px rgb(248, 246, 246);
-
-    margin: 150px auto;
-
-    padding: 10px;
-
-    max-width: 400px;
-
-}
-
-#decryptImagePage {
-    
-    background-color: #3498db;
-    box-shadow: 0 0 10px rgb(253, 252, 252);
-
-    margin: 150px auto;
-
-    padding: 10px;
-
-    max-width: 400px;
-
-}
-
-            body {
-
-    font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    
-background-image: url("steg2.jpg");
-    margin: 0;
-
-    padding: 0;
-
-}    
-button {
-  color: white; /* Change this to the desired color */
-}
-        h1, h2, p {
-            color: white;
-            text-align: center;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        input {
-            padding: 10px;
-            margin-bottom: 16px;
-            border: 1px solid rgb(253, 253, 253); width: 250px;
-            border-radius: 8px;
-        }
-
-        button {
-            background-color: darkblue;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: darkblue;
-        }
-
-        input:hover, input:focus {
-            border-color: #f2f3f5;
-        }
-        button {
-            background-color: darkblue;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            color: white;
-        }
-
-        button:hover {
-            background-color: darkblue;
-        }
-
-        input:hover, input:focus {
-            border-color: #f2f3f5;
+        input, button {
+            margin: 10px 0;
         }
 
         img {
             max-width: 100%;
             height: auto ;
+        }
+
+        #login {
+            background-color: #3498db;
+            box-shadow: 0 0 10px rgb(248, 246, 246);
+            margin: 150px auto;
+            padding: 10px;
+            max-width: 400px;
+        }
+
+        #decryptImagePage {
+            background-color: #3498db;
+            box-shadow: 0 0 10px rgb(253, 252, 252);
+            margin: 150px auto;
+            padding: 10px;
+            max-width: 400px;
+        }
+
+        h1, h2, p {
+            color: white;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid rgb(253, 253, 253); width: 250px;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: darkblue;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        input:hover, input:focus {
+            border-color: #f2f3f5;
         }
     </style>
 </head>
@@ -224,48 +174,18 @@ button {
         decryptedMessageElement.innerText = simulatedDecryptedMessage;
     }
 
-    function decryptMessageFromImage() {
-        const encryptedImageElement = document.getElementById('encryptedImage'); // Get the encrypted image element
-        const canvas = document.createElement('canvas'); // Create a canvas element
-        const context = canvas.getContext('2d'); // Get the 2D context of the canvas
+    // Get the encrypted message from the URL query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const encryptedMessage = urlParams.get('encryptedMessage');
 
-        // Set canvas dimensions to match the image
-        canvas.width = encryptedImageElement.width;
-        canvas.height = encryptedImageElement.height;
+    function goToIndex() {
+        // Redirect to the index page
+        window.location.href = 'encrypt.html';
+    }
 
-        // Draw the image onto the canvas
-        context.drawImage(encryptedImageElement, 0, 0);
-
-        // Get the image data from the canvas
-        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-
-        // Decrypt the message from the image data
-        const decryptedMessage = revealMessageInImage(imageData);
-
-        // Display the decrypted message
+    function decryptMessage() {
         const decryptedMessageElement = document.getElementById('decryptedMessage');
-        decryptedMessageElement.innerText = decryptedMessage;
-    }
-
-    function revealMessageInImage(imageData) {
-        let binaryMessage = '';
-
-        // Iterate through the image data
-        for (let i = 0; i < imageData.data.length; i += 4) {
-            for (let j = 0; j < 3; j++) {
-                // Extract the least significant bit and append to the binary message
-                binaryMessage += (imageData.data[i + j] & 0b00000001).toString();
-            }
-        }
-
-        // Convert binary message to text
-        return binaryToText(binaryMessage);
-    }
-
-    function binaryToText(binary) {
-        return binary.match(/.{8}/g).map(function(byte) {
-            return String.fromCharCode(parseInt(byte, 2));
-        }).join('');
+        document.getElementById('displayText').value = localStorage.getItem('savedText');      
     }
 </script>
 </body>
