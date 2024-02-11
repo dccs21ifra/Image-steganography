@@ -17,27 +17,30 @@
             background-image: url("steg2.jpg");
         }
 
-        body {
-            background-color: #3498db;
-            font-family: Arial, sans-serif;
-       background-image: url("steg2.jpg");
+        h1, h2, p {
+            color: white;
+            text-align: center;
         }
-        
 
         form {
+            display: flex;
+            flex-direction: column;
             margin: 50px;
         }
 
-        input, button {
-            margin: 10px 0;
+        label {
+            margin-bottom: 8px;
+            color: white;
         }
 
-        img {
-            max-width: 100%;
-            height: auto ;
+        input {
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid rgb(253, 253, 253); width: 250px;
+            border-radius: 8px;
         }
-
-  #login {
+        
+        #login {
     background-color: #3498db;
     
 
@@ -51,30 +54,7 @@
 
 }
 
-#registration {
-    
-    background-color: #3498db;
-    box-shadow: 0 0 10px rgb(253, 252, 252);
-
-    margin: 150px auto;
-
-    padding: 10px;
-
-    max-width: 400px;
-}
-
-            body {
-
-    font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    background-image: url("steg2.jpg");
-
-    margin: 0;
-
-    padding: 0;
-
-}
-  #decryptImagePage {
+#decryptImagePage {
     
     background-color: #3498db;
     box-shadow: 0 0 10px rgb(253, 252, 252);
@@ -139,37 +119,39 @@ button {
         input:hover, input:focus {
             border-color: #f2f3f5;
         }
+        button {
+            background-color: darkblue;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        input:hover, input:focus {
+            border-color: #f2f3f5;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto ;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Page 1: Registration Form -->
-
-    <section id="registration">
-
-        <h1>Registration</h1>
-
-        <form onsubmit="goToLogin(); return false;">
-
-            <label for="newUsername">New Username:</label>
-            <input type="text" id="newUsername" required><br>
-
-            <label for="newPassword">New Password:</label>
-            <input type="password" id="newPassword" required><br>
-
-            <button type="submit">Register</button>
-
-        </form>
-
-    </section>
-
     <!-- Page 2: Login Form -->
 
-    <section id="login" style="display: none;">
+    <section id="login">
 
         <h1>Login</h1>
 
-        <form onsubmit="goToDecryptImagePage(); return false;">
+        <form onsubmit="authenticate(); return false;">
 
             <label for="username">Username:</label>
             <input type="text" id="username" required><br>
@@ -197,18 +179,23 @@ button {
 
 
 <script>
+    function authenticate() {
+        // Simulate authentication
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-function goToLogin() {
-            document.getElementById('registration').style.display = 'none';
-            document.getElementById('login').style.display = 'block';
-        }
-
-        function goToDecryptImagePage() {
+        // Here you would perform actual authentication
+        // For demonstration purposes, let's assume a valid username and password
+        if (username === 'user' && password === 'password') {
+            // Show the decrypt image page
             document.getElementById('login').style.display = 'none';
             document.getElementById('decryptImagePage').style.display = 'block';
+        } else {
+            // Show an error message or handle authentication failure
+            alert('Invalid username or password. Please try again.');
         }
+    }
 
-    
     function openSavedImage() {
         const encryptedImageElement = document.getElementById('encryptedImage');
 
@@ -237,21 +224,48 @@ function goToLogin() {
         decryptedMessageElement.innerText = simulatedDecryptedMessage;
     }
 
-    // Get the encrypted message from the URL query parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const encryptedMessage = urlParams.get('encryptedMessage');
+    function decryptMessageFromImage() {
+        const encryptedImageElement = document.getElementById('encryptedImage'); // Get the encrypted image element
+        const canvas = document.createElement('canvas'); // Create a canvas element
+        const context = canvas.getContext('2d'); // Get the 2D context of the canvas
 
-    function goToIndex() {
-        // Redirect to the index page
-        window.location.href = 'encrypt.html';
-    }
-// Append the link to a container (e.g., a div with id 'linkContainer')
-document.getElementById('linkContainer').appendChild(encryptPageLink);function decryptMessage() {
+        // Set canvas dimensions to match the image
+        canvas.width = encryptedImageElement.width;
+        canvas.height = encryptedImageElement.height;
+
+        // Draw the image onto the canvas
+        context.drawImage(encryptedImageElement, 0, 0);
+
+        // Get the image data from the canvas
+        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+        // Decrypt the message from the image data
+        const decryptedMessage = revealMessageInImage(imageData);
+
+        // Display the decrypted message
         const decryptedMessageElement = document.getElementById('decryptedMessage');
+        decryptedMessageElement.innerText = decryptedMessage;
+    }
 
-        
-  document.getElementById('displayText').value = localStorage.getItem('savedText');      
-       
+    function revealMessageInImage(imageData) {
+        let binaryMessage = '';
+
+        // Iterate through the image data
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            for (let j = 0; j < 3; j++) {
+                // Extract the least significant bit and append to the binary message
+                binaryMessage += (imageData.data[i + j] & 0b00000001).toString();
+            }
+        }
+
+        // Convert binary message to text
+        return binaryToText(binaryMessage);
+    }
+
+    function binaryToText(binary) {
+        return binary.match(/.{8}/g).map(function(byte) {
+            return String.fromCharCode(parseInt(byte, 2));
+        }).join('');
     }
 </script>
 </body>
