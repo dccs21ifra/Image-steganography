@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Your Message - Decrypt Page</title>
     <style>
-        body {font-family: 'Roboto', sans-serif;
+        body {
             background-color: #3498db;
-          
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -54,7 +54,6 @@
         h1, h2, p, label {
             color: white;
             text-align: center;
-            font-family: 'Roboto', sans-serif;
         }
 
         form {
@@ -76,7 +75,6 @@
         #login {
             background-color: #3498db;
             box-shadow: 0 0 10px rgb(248, 246, 246);
-            font-family: 'Roboto', sans-serif;
             margin: 150px auto;
             padding: 50px;
             max-width: 400px;
@@ -85,7 +83,6 @@
         #decryptImagePage {
             background-color: #3498db;
             box-shadow: 0 0 10px rgb(253, 252, 252);
-            font-family: 'Roboto', sans-serif;
             margin: 150px auto;
             padding: 10px;
             max-width: 400px;
@@ -174,14 +171,7 @@ function goToDecryptImagePage() {
         };
         input.click();
     }
- function decryptMessage() {
-        const decryptedMessageElement = document.getElementById('decryptedMessage');
-        const decryptedMessage = encryptedMessage.replace(/[a-zA-Z]/g, function(char) {
-            const code = char.charCodeAt(0);
-            return String.fromCharCode(code - 1);
-        });
-        decryptedMessageElement.innerText = decryptedMessage;
-    }
+
     function decryptMessage() {
         const decryptedMessageElement = document.getElementById('decryptedMessage');
 
