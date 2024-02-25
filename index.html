@@ -1,50 +1,271 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Secure Your Message</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {background-color: #3498db;
 
-    <link rel="stylesheet" href="styles.css" style="text-decoration: none"> <!-- You may want to move the styles to an external CSS file -->
+            font-family: Arial, sans-serif;
 
-</head>
+        }
 
-<style>
+        form {
 
-body {color:white;
+            margin: 20px;
 
+        }
+
+        input, button {
+
+            margin: 10px 0;
+
+        }
+
+        img {
+
+            max-width: 100%;
+
+            height: auto;
+
+        }
+
+        body {
+    background-color: #3498db;
     font-family: 'Roboto', sans-serif;
 
-    background:rgb(252, 252, 253);
-background-color: #3498db;
-    background-image: url("steg1.jpg");
-
-    background-size: cover;
+    background-image: url("steg2.jpg");
 
     margin: 0;
 
     padding: 0;
 
-    display: flex;
+}
 
-    align-items: center;
 
-    justify-content: center;
 
-    height: 100vh;
+#login {
+    background-color: #3498db;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 0 10px rgb(248, 246, 246);
+
+    margin: 150px auto;
+
+    padding: 50px;
+
+    max-width: 400px;
 
 }
+
+#registration {
+    font-family: 'Roboto', sans-serif;
+    background-color: #3498db;
+    box-shadow: 0 0 10px rgb(253, 252, 252);
+
+    margin: 150px auto;
+
+    padding: 50px;
+
+    max-width: 400px;
+
+}
+
+            body {
+
+    font-family: 'Roboto', sans-serif;
+    background-color: #3498db;
+    
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+button {
+  color: white; /* Change this to the desired color */
+}
+        
+
+h1 {
+
+    color:white;
+
+    text-align: center;
+
+}
+
+h2 {
+
+    color:white;
+
+    text-align: center;
+
+}
+
+p {
+
+    color:white;
+
+    text-align: center;
+
+}
+
+form {
+
+    
+
+    flex-direction: column;
+
+}
+
+
+
+label {
+
+    margin-bottom: 10px;
+
+    color:white;
+
+}
+
+
+
+input {
+
+    padding: 10px;
+
+    margin-bottom: 16px;
+
+    border: rgb(253, 253, 253);
+
+    border-radius: 8px;
+
+}
+
+
+
+button {
+
+    background-color: darkblue;
+       padding: 10px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+}
+
+
+
+button:hover {
+
+    background-color: darkblue;
+
+}
+
+
+
+/* Add a subtle hover effect to input fields */
+
+input:hover,
+
+input:focus {
+
+    border-color: #f2f3f5;
+
+}
+
+
+button {
+  color: white; /* Change this to the desired color */
+}
+        
+
+h1 {
+
+    color:white;
+
+    text-align: center;
+
+}
+
+h2 {
+
+    color:white;
+
+    text-align: center;
+
+}
+
+p {
+
+    color:white;
+
+    text-align: center;
+
+}
+
+form {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+
+label {
+
+    margin-bottom: 10px;
+
+    color:white;
+
+}
+
+
+
+input {
+
+    padding: 10px;
+
+    margin-bottom: 16px;
+
+    border: rgb(253, 253, 253);
+
+    border-radius: 8px;
+
+}
+
+
+
+button {
+
+    background-color: darkblue;
+       padding: 10px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+}
+
+
 
 button {
 
 background-color: darkblue;
 color: #fff;
-
+width: 250px;
 padding: 10px;
 
 border: none;
@@ -98,45 +319,53 @@ body {
         }
 
 
-</style>
+     
+    </style>
+</head>
+<body>
+    <!-- Page 1: Registration Form -->
+    <section id="registration">
+        <h1>Registration</h1>
+        <form onsubmit="goToLogin(); return false;">
+            <label for="newUsername">New Username:</label>
+            <input type="text" id="newUsername" required><br>
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" required><br>
+            <button type="submit">Register</button>
+        </form>
+    </section>
 
+    <!-- Page 2: Login Form -->
+    <section id="login" style="display: none;">
+        <h1>Login</h1>
+        <form onsubmit="goToHome(); return false;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><br>
+            <button type="submit">Login</button>
+        </form>
+    </section>
 
-
-<body style="background-image: url('steg1.jpg'); background-size: cover; background-repeat: no-repeat;">
-
-    <!-- Home Page -->
-
-    <section id="home">
-
+    <!-- Page 3: Home Page -->
+    <section id="home" style="display: none;">
         <h1>SECURE YOUR MESSAGE</h1>
-
-        
-        
-       <a href="encrypt.html">Encrypt</a>
+        <a href="encrypt.html">Encrypt</a>
         <a href="decrypt.html">Decrypt</a>
     </section>
-</body>
-        </a>
-
-    </section>
-
-
 
     <script>
+        let encryptedMessage = '';
 
         function goToLogin() {
-
-            document.getElementById('home').style.display = 'none';
-
+            document.getElementById('registration').style.display = 'none';
             document.getElementById('login').style.display = 'block';
-
         }
 
+        function goToHome() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+        }
     </script>
-
 </body>
-
 </html>
-
-
-
