@@ -64,15 +64,14 @@
     background-color: #3498db;
     box-shadow: 0 0 10px rgb(253, 252, 252);
 
-    margin: 150px auto;
+    margin: 50px auto;
 
     padding: 50px;
 
-    max-width: 400px;
+    max-width: 300px;
 
 }
-
-            body {
+ body {
 
     font-family: 'Roboto', sans-serif;
     background-color: #3498db;
@@ -318,54 +317,99 @@ body {
             background-color: #0a5aa2;
         }
 
-
-     
     </style>
 </head>
 <body>
-    <!-- Page 1: Registration Form -->
-    <section id="registration">
-        <h1>Registration</h1>
-        <form onsubmit="goToLogin(); return false;">
-            <label for="newUsername">New Username:</label>
-            <input type="text" id="newUsername" required><br>
-            <label for="newPassword">New Password:</label>
-            <input type="password" id="newPassword" required><br>
-            <button type="submit">Register</button>
-        </form>
-    </section>
+  <!-- Page 1: Registration Form -->
+<section id="registration">
+    <h1>Registration</h1>
+    <form onsubmit="registerUser(); goToLogin(); return false;">
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" required autocomplete="off"><br>
+        <label for="newEmail">Email Address:</label>
+        <input type="email" id="newEmail" required autocomplete="off"><br>
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" required autocomplete="off"><br>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" required autocomplete="off"><br>
+        <button type="submit">Register</button>
+    </form>
+</section>
 
-    <!-- Page 2: Login Form -->
-    <section id="login" style="display: none;">
-        <h1>Login</h1>
-        <form onsubmit="goToHome(); return false;">
-            <label for="username">Username:</label>
-            <input type="text" id="username" required><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" required><br>
-            <button type="submit">Login</button>
-        </form>
-    </section>
+<!-- Page 2: Login Form -->
+<section id="login" style="display: none;">
+    <h1>Login</h1>
+    <form onsubmit="loginUser(); return false;">
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" required autocomplete="off"><br>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" required autocomplete="off"><br>
+        <button type="submit">Login</button>
+    </form>
+</section>
 
-    <!-- Page 3: Home Page -->
-    <section id="home" style="display: none;">
-        <h1>SECURE YOUR MESSAGE</h1>
-        <a href="encrypt.html">Encrypt</a>
-        <a href="decrypt.html">Decrypt</a>
-    </section>
+<!-- Page 3: Home Page -->
+<section id="home" style="display: none;">
+    <h1>SECURE YOUR MESSAGE</h1>
+    <a href="encrypt.html">Encrypt</a>
+    <a href="decrypt.html">Decrypt</a>
+</section>
 
-    <script>
-        let encryptedMessage = '';
+<script>
+    let encryptedMessage = '';
 
-        function goToLogin() {
-            document.getElementById('registration').style.display = 'none';
-            document.getElementById('login').style.display = 'block';
+    function goToLogin() {
+        document.getElementById('registration').style.display = 'none';
+        document.getElementById('login').style.display = 'block';
+    }
+
+    function goToHome() {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('home').style.display = 'block';
+    }
+
+    function loginUser() {
+        const loginUsername = document.getElementById('loginUsername').value;
+        const loginPassword = document.getElementById('loginPassword').value;
+
+        // Here you can check if the login credentials match those stored during registration
+        // For simplicity, let's assume the user registered with the following credentials
+        const registeredUsername = document.getElementById('newUsername').value;
+        const registeredPassword = document.getElementById('newPassword').value;
+
+        // Perform validation by checking if the provided credentials match the registered ones
+        if (loginUsername !== registeredUsername || loginPassword !== registeredPassword) {
+            alert('Invalid username or password. Please try again.');
+            return;
         }
 
-        function goToHome() {
-            document.getElementById('login').style.display = 'none';
-            document.getElementById('home').style.display = 'block';
+        // If credentials match, proceed to the home page
+        goToHome();
+    }
+
+    function registerUser() {
+        const newUsername = document.getElementById('newUsername').value;
+        const newEmail = document.getElementById('newEmail').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Perform validation, such as checking if passwords match
+        if (newPassword !== confirmPassword) {
+            alert('Passwords do not match. Please try again.');
+            return;
         }
+
+        // You can perform additional validation here, such as checking if the username or email is already taken
+        
+        // Assuming successful registration, you can store the user's information or redirect them to another page
+        // For example, you can redirect them to the login page after successful registration
+        goToLogin();
+    }
+</script>
+
+  
+
+      
     </script>
 </body>
 </html>
