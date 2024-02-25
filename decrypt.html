@@ -5,27 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Your Message - Decrypt Page</title>
     <style>
-        body {
+        body {font-family: 'Roboto', sans-serif;
             background-color: #3498db;
-            font-family: 'Roboto', sans-serif;
+          
             margin: 0;
             padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-image: url("steg2.jpg");
         }
-
-        body {
-            background-color: #3498db;
-            font-family: Arial, sans-serif;
-       background-image: url("steg2.jpg");
-        }
-        
 
         form {
-            margin: 50px;
+            margin: 20px;
         }
 
         input, button {
@@ -34,96 +22,19 @@
 
         img {
             max-width: 100%;
-            height: auto ;
+            height: auto;
         }
 
-  #login {
-    background-color: #3498db;
-    
-
-    box-shadow: 0 0 10px rgb(248, 246, 246);
-
-    margin: 150px auto;
-
-    padding: 10px;
-
-    max-width: 400px;
-
-}
-
-#registration {
-    
-    background-color: #3498db;
-    box-shadow: 0 0 10px rgb(253, 252, 252);
-
-    margin: 150px auto;
-
-    padding: 10px;
-
-    max-width: 400px;
-}
-
-            body {
-
-    font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    background-image: url("steg2.jpg");
-
-    margin: 0;
-
-    padding: 0;
-
-}
-  #decryptImagePage {
-    
-    background-color: #3498db;
-    box-shadow: 0 0 10px rgb(253, 252, 252);
-
-    margin: 150px auto;
-
-    padding: 10px;
-
-    max-width: 400px;
-
-}
-
-            body {
-
-    font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    
-background-image: url("steg2.jpg");
-    margin: 0;
-
-    padding: 0;
-
-}    
-button {
-  color: white; /* Change this to the desired color */
-}
-        h1, h2, p {
-            color: white;
-            text-align: center;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        input {
-            padding: 10px;
-            margin-bottom: 16px;
-            border: 1px solid rgb(253, 253, 253); width: 250px;
-            border-radius: 8px;
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #3498db;
+            background-image: url("steg2.jpg");
+            margin: 0;
+            padding: 0;
         }
 
         button {
+            color: white;
             background-color: darkblue;
             padding: 10px;
             border: none;
@@ -139,71 +50,108 @@ button {
         input:hover, input:focus {
             border-color: #f2f3f5;
         }
+
+        h1, h2, p, label {
+            color: white;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid rgb(253, 253, 253);
+            border-radius: 8px;
+        }
+
+        #login {
+            background-color: #3498db;
+            box-shadow: 0 0 10px rgb(248, 246, 246);
+            font-family: 'Roboto', sans-serif;
+            margin: 150px auto;
+            padding: 50px;
+            max-width: 400px;
+        }
+
+        #decryptImagePage {
+            background-color: #3498db;
+            box-shadow: 0 0 10px rgb(253, 252, 252);
+            font-family: 'Roboto', sans-serif;
+            margin: 150px auto;
+            padding: 10px;
+            max-width: 400px;
+        }
+
+        .encrypt-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: transparent; /* Set background color to transparent */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            position: center;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .encrypt-button:hover {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Page 1: Registration Form -->
+<!-- Page 1: Login Form -->
+<section id="login">
+    <h1>Login</h1>
+    <form onsubmit="authenticateUser(); return false;" autocomplete="off">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br>
+        <button type="submit">Login</button>
+    </form>
+</section>
 
-    <section id="registration">
-
-        <h1>Registration</h1>
-
-        <form onsubmit="goToLogin(); return false;">
-
-            <label for="newUsername">New Username:</label>
-            <input type="text" id="newUsername" required><br>
-
-            <label for="newPassword">New Password:</label>
-            <input type="password" id="newPassword" required><br>
-
-            <button type="submit">Register</button>
-
-        </form>
-
-    </section>
-
-    <!-- Page 2: Login Form -->
-
-    <section id="login" style="display: none;">
-
-        <h1>Login</h1>
-
-        <form onsubmit="goToDecryptImagePage(); return false;">
-
-            <label for="username">Username:</label>
-            <input type="text" id="username" required><br>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" required><br>
-
-            <button type="submit">Login</button>
-
-        </form>
-
-    </section>
-
-    <!-- Page 3: Decrypt Image Page -->
-    <section id="decryptImagePage" style="display: none;">
-        <h1>Decrypt Image and View Message</h1>
-        <button onclick="openSavedImage()">Open Image</button>
-
-        <img id="encryptedImage" alt="Encrypted Image">
-        <h2>Decrypted Message:</h2>
-        <p id="decryptedMessage"></p>
-        <button onclick="decryptMessage()">Decrypt Message</button>
-        <textarea id="displayText"></textarea>
-    </section>
+<!-- Page 2: Decrypt Image Page -->
+<section id="decryptImagePage" style="display: none;">
+    <h1>Decrypt Image and View Message</h1>
+    <button onclick="openSavedImage()">Open Image</button>
+    <img id="encryptedImage" alt="Encrypted Image">
+    <h2>Decrypted Message:</h2>
+    <p id="decryptedMessage"></p>
+    <button onclick="decryptMessage()">Decrypt Message</button>
+    <textarea id="displayText"></textarea>
+ <button><a href="encrypt.html" style="text-decoration: none; color: white;">Go to Encrypt Page</a></button>
 
 
 <script>
+    function authenticateUser() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-function goToLogin() {
-            document.getElementById('registration').style.display = 'none';
-            document.getElementById('login').style.display = 'block';
+        // Check if username and password match
+        if (username === 'ifra' && password === '2003') {
+            // If authentication successful, show the decrypt image page
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('decryptImagePage').style.display = 'block';
+        } else {
+            // If authentication failed, display an error message
+            alert('Invalid username or password. Please try again.');
         }
-
-        function goToDecryptImagePage() {
+    }
+function goToDecryptImagePage() {
             document.getElementById('login').style.display = 'none';
             document.getElementById('decryptImagePage').style.display = 'block';
         }
@@ -255,4 +203,4 @@ document.getElementById('linkContainer').appendChild(encryptPageLink);function d
     }
 </script>
 </body>
-    </html>
+</html>
