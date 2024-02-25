@@ -5,241 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Your Message</title>
     <style>
-        body {background-color: #3498db;
-font-family: 'Roboto', sans-serif;
-            
-
+        body {
+            background-color: #3498db;
+            font-family: Arial, sans-serif;
         }
 
         form {
-
             margin: 20px;
-
         }
 
         input, button {
-
             margin: 10px 0;
-
         }
 
         img {
-
             max-width: 100%;
-
             height: auto;
-
         }
 
-        body {
-    background-color: #3498db;
-    font-family: 'Roboto', sans-serif;
-
-    background-image: url("steg2.jpg");
-
-    margin: 0;
-
-    padding: 0;
-
-}
-
- 
-
- #imageInsertion {
-font-family: 'Roboto', sans-serif;
-    
-    background-color: #3498db;
-    box-shadow: 0 0 10px rgb(241, 238, 238);
-
-    margin: 150px auto;
-
-    padding: 30px;
-
-    max-width: 400px;
-
-        }body {
-
-    font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    background-image: url("steg2.jpg");
-
-    margin: 0;
-
-    padding: 0;
-
-}
-#encryptMessage {
-    background-color: #3498db;
-    box-shadow: 0 0 10px rgb(241, 238, 238);
-    font-family: 'Roboto', sans-serif;
-    margin: 150px auto;
-
-    padding: 30px;
-
-    max-width: 400px;
-
-        }body {
-
-    font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    background-image: url("steg2.jpg");
-
-    margin: 0;
-
-    padding: 0;
-
-}
-    
-
-#saveImage {
-font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    box-shadow: 0 0 10px rgb(250, 250, 250);
-
-    margin: 150px auto;
-
-    padding: 50px;
-
-    max-width: 400px;
-
-        }body {
-font-family: 'Roboto', sans-serif;
-    font-family: 'Roboto', sans-serif;
-    background-color: #3498db;
-    background-image: url("steg2.jpg");
-
-    margin: 0;
-
-    padding: 0;
-
-}
-button {
-  color: white; /* Change this to the desired color */
-}
-        
-
-h1 {font-family: 'Roboto', sans-serif;
-font-family: Arial, sans-serif;
-    color:white;
-font-family: 'Roboto', sans-serif;
-    text-align: center;
-
-}
-
-h2 {
-
-    color:white;
-
-    text-align: center;
-
-}
-
-p {
-
-    color:white;
-
-    text-align: center;
-
-}
-
-form {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-
-label {
-
-    margin-bottom: 10px;
-
-    color:white;
-
-}
-
-
-
-input {
-
-    padding: 10px;
-
-    margin-bottom: 16px;
-
-    border: rgb(253, 253, 253);
-
-    border-radius: 8px;
-
-}
-
-
-
-button {
-
-    background-color: darkblue;
-       padding: 10px;
-
-    border: none;
-
-    border-radius: 4px;
-
-    cursor: pointer;
-
-}
-
-
-
-button:hover {
-
-    background-color: darkblue;
-
-}
-
-
-
-/* Add a subtle hover effect to input fields */
-
-input:hover,
-
-input:focus {
-
-    border-color: #f2f3f5;
-
-}
-
-
-
-/* Add a subtle transition effect to the button */
-
-button {
-background-color: darkblue;
-    transition: background-color 0.3s ease;
-
-}
-
-
-    .decrypt-button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: dark blue;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .decrypt-button:hover {
-      background-color: dark blue;
-    }
+        #imageInsertion, #encryptMessage, #saveImage {
+            background-color: #3498db;
+            box-shadow: 0 0 10px rgb(241, 238, 238);
+            margin: 150px auto;
+            padding: 30px;
+            max-width: 400px;
+        }
+
+        button {
+            color: white;
+            background-color: darkblue;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        input:hover, input:focus {
+            border-color: #f2f3f5;
+        }
+
+        h1, h2, p, label {
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid rgb(253, 253, 253);
+            border-radius: 8px;
+        }
+
+        .decrypt-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .decrypt-button:hover {
+            background-color: darkblue;
+        }
 
     </style>
 </head>
 <body>
 
 <!-- Page 1: Image Insertion -->
-
 <section id="imageInsertion">
     <h1>Insert Image</h1>
     <form onsubmit="goToEncryptMessage(); return false;">
@@ -250,74 +100,31 @@ background-color: darkblue;
 </section>
 
 <!-- Page 2: Encrypt Message -->
-
 <section id="encryptMessage" style="display: none;">
-
     <h1>Encrypt Message</h1>
-
     <form onsubmit="saveAndEncrypt(); return false;">
-
         <label for="message">Enter Message to Encrypt:</label>
-
-        <textarea id="message" rows="4" cols="50" required></textarea><br>
-
-        <!-- Dropdown for predefined messages -->
-
+        <textarea id="textToTransfer"></textarea>
         <label for="predefinedMessages">Predefined Messages:</label>
-
         <select id="predefinedMessages" onchange="insertPredefinedMessage()">
-
             <option value="" selected disabled>Select a message</option>
-
             <option value="Hello, world!">Hello, world!</option>
-
             <option value="Good morning!">Good morning!</option>
-
             <option value="How are you?">How are you?</option>
-
         </select><br>
-
-  <button onclick="saveText()">Encrypt and Save Text</button>      
-
+        <button onclick="saveText()">Encrypt and Save Text</button>
     </form>
-
 </section>
-
-<script>
-
- 
-
-    function insertPredefinedMessage() {
-
-        const messageTextarea = document.getElementById('message');
-
-        const predefinedMessagesDropdown = document.getElementById('predefinedMessages');
-
-
-
-        if (predefinedMessagesDropdown.value !== "") {
-
-            messageTextarea.value += predefinedMessagesDropdown.value;
-
-        }
-
-    }
-
-
-</script>
 
 <!-- Page 3: Save Image and Decrypt Message -->
 <section id="saveImage" style="display: none;">
     <h1>Save Image and Decrypt Message</h1>
     <img id="resultImage" alt="Result Image"><br>
-    <button onclick="saveImage()">Save Image</button> <!-- Added saveImage function -->
     <button onclick="decryptMessage()">Decrypt Message</button>
     <h2>Decrypted Message:</h2>
     <p id="decryptedMessage"></p>
     <button class="decrypt-button" onclick="goToDecryptPage()">Go to Decrypt Page</button>
 </section>
-
-
 
 <script>
     let encryptedMessage = '';
@@ -328,7 +135,7 @@ background-color: darkblue;
     }
 
     function saveAndEncrypt() {
-        const messageInput = document.getElementById('message').value;
+        const messageInput = document.getElementById('textToTransfer').value; // corrected id
         encryptedMessage = messageInput.replace(/[a-zA-Z]/g, function(char) {
             const code = char.charCodeAt(0);
             return String.fromCharCode(code + 1);
@@ -358,28 +165,6 @@ background-color: darkblue;
         localStorage.setItem('savedText', text);
     }
 
-    // Function to save the image to the user's gallery
-    function saveImage() {
-        const resultImageElement = document.getElementById('resultImage');
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        const img = new Image();
-        img.onload = function () {
-            canvas.width = img.width;
-            canvas.height = img.height;
-            context.drawImage(img, 0, 0);
-            // Convert the canvas to a data URL
-            const dataURL = canvas.toDataURL('image/png');
-            // Create a link element
-            const link = document.createElement('a');
-            link.href = dataURL;
-            link.download = 'result_image.png'; // Set the filename
-            // Simulate a click on the link to prompt the user to save the image
-            link.click();
-        };
-        img.src = resultImageElement.src;
-    }
-
     function decryptMessage() {
         const decryptedMessageElement = document.getElementById('decryptedMessage');
         const decryptedMessage = encryptedMessage.replace(/[a-zA-Z]/g, function(char) {
@@ -392,6 +177,14 @@ background-color: darkblue;
     function goToDecryptPage() {
         const encryptedMessageParam = encodeURIComponent(encryptedMessage);
         window.location.href = 'decrypt.html?encryptedMessage=' + encryptedMessageParam;
+    }
+
+    function insertPredefinedMessage() {
+        const messageTextarea = document.getElementById('textToTransfer');
+        const predefinedMessagesDropdown = document.getElementById('predefinedMessages');
+        if (predefinedMessagesDropdown.value !== "") {
+            messageTextarea.value = predefinedMessagesDropdown.value;
+        }
     }
 </script>
 
