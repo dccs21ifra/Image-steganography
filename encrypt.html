@@ -267,16 +267,18 @@ background-color: darkblue;
         <button onclick="saveText()">Encrypt and Save Text</button>
     </form>
 </section>
-
 <!-- Page 3: Save Image and Decrypt Message -->
 <section id="saveImage" style="display: none;">
     <h1>Save Image and Decrypt Message</h1>
     <img id="resultImage" alt="Result Image"><br>
+    <button onclick="saveImage()">Save Image</button> <!-- Added saveImage function -->
     <button onclick="decryptMessage()">Decrypt Message</button>
     <h2>Decrypted Message:</h2>
     <p id="decryptedMessage"></p>
     <button class="decrypt-button" onclick="goToDecryptPage()">Go to Decrypt Page</button>
 </section>
+
+
 
 <script>
     let encryptedMessage = '';
@@ -315,6 +317,28 @@ background-color: darkblue;
     function saveText() {
         var text = document.getElementById('textToTransfer').value;
         localStorage.setItem('savedText', text);
+    }
+
+    // Function to save the image to the user's gallery
+    function saveImage() {
+        const resultImageElement = document.getElementById('resultImage');
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        const img = new Image();
+        img.onload = function () {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            context.drawImage(img, 0, 0);
+            // Convert the canvas to a data URL
+            const dataURL = canvas.toDataURL('image/png');
+            // Create a link element
+            const link = document.createElement('a');
+            link.href = dataURL;
+            link.download = 'result_image.png'; // Set the filename
+            // Simulate a click on the link to prompt the user to save the image
+            link.click();
+        };
+        img.src = resultImageElement.src;
     }
 
     function decryptMessage() {
