@@ -174,7 +174,14 @@ function goToDecryptImagePage() {
         };
         input.click();
     }
-
+ function decryptMessage() {
+        const decryptedMessageElement = document.getElementById('decryptedMessage');
+        const decryptedMessage = encryptedMessage.replace(/[a-zA-Z]/g, function(char) {
+            const code = char.charCodeAt(0);
+            return String.fromCharCode(code - 1);
+        });
+        decryptedMessageElement.innerText = decryptedMessage;
+    }
     function decryptMessage() {
         const decryptedMessageElement = document.getElementById('decryptedMessage');
 
