@@ -250,23 +250,62 @@ background-color: darkblue;
 </section>
 
 <!-- Page 2: Encrypt Message -->
+
 <section id="encryptMessage" style="display: none;">
+
     <h1>Encrypt Message</h1>
+
     <form onsubmit="saveAndEncrypt(); return false;">
+
         <label for="message">Enter Message to Encrypt:</label>
+
         <textarea id="message" rows="4" cols="50" required></textarea><br>
-        <label for="textToTransfer">Re-enter Message to Encrypt:</label>
-        <textarea id="textToTransfer"></textarea>
+
+        <!-- Dropdown for predefined messages -->
+
         <label for="predefinedMessages">Predefined Messages:</label>
+
         <select id="predefinedMessages" onchange="insertPredefinedMessage()">
+
             <option value="" selected disabled>Select a message</option>
+
             <option value="Hello, world!">Hello, world!</option>
+
             <option value="Good morning!">Good morning!</option>
+
             <option value="How are you?">How are you?</option>
+
         </select><br>
-        <button onclick="saveText()">Encrypt and Save Text</button>
+
+  <button onclick="saveText()">Encrypt and Save Text</button>      
+
     </form>
+
 </section>
+
+<script>
+
+ 
+
+    function insertPredefinedMessage() {
+
+        const messageTextarea = document.getElementById('message');
+
+        const predefinedMessagesDropdown = document.getElementById('predefinedMessages');
+
+
+
+        if (predefinedMessagesDropdown.value !== "") {
+
+            messageTextarea.value += predefinedMessagesDropdown.value;
+
+        }
+
+    }
+
+
+</script>
+
 <!-- Page 3: Save Image and Decrypt Message -->
 <section id="saveImage" style="display: none;">
     <h1>Save Image and Decrypt Message</h1>
